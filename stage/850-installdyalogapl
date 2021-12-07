@@ -1,24 +1,24 @@
-#!/bin/bash
+# #!/bin/bash
 
-err=0
-trap 'err=1' ERR
+# err=0
+# trap 'err=1' ERR
 
-source private/config
-if [[ "$OfflineMode" != "y" ]]; then
-  pushd /opt
+# source private/config
+# if [[ "$OfflineMode" != "y" ]]; then
+#   pushd /opt
 
-  for dyalogzip in linux_64_*_*.zip; do
-    dyalogrpm=${dyalogzip%.zip}.x86_64.rpm
-    rm -f $dyalogrpm
-    if unzip $dyalogzip $dyalogrpm; then
-      dnf install -y $dyalogrpm
-      rm -f $dyalogzip $dyalogrpm
-    else
-      err=1
-    fi
-  done
+#   for dyalogzip in linux_64_*_*.zip; do
+#     dyalogrpm=${dyalogzip%.zip}.x86_64.rpm
+#     rm -f $dyalogrpm
+#     if unzip $dyalogzip $dyalogrpm; then
+#       dnf install -y $dyalogrpm
+#       rm -f $dyalogzip $dyalogrpm
+#     else
+#       err=1
+#     fi
+#   done
 
-  popd
-fi
+#   popd
+# fi
 
-exit "$err"
+# exit "$err"
